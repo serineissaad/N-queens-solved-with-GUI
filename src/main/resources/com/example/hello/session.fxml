@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Open Source Software published under the Apache Licence, Version 2.0.
+  -->
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hello.SessionController">
+    <center>
+        <AnchorPane style="-fx-background-color: #000000;">
+            <TabPane style="-fx-background-color: #000000;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Tab style="-fx-background-color: #000000;" text="N-Queens ">
+                    <SplitPane fx:id="splitWordList" dividerPositions="0.65" orientation="HORIZONTAL" style="-fx-background-color: #000000;">
+                        <AnchorPane style="-fx-background-color: #000000;">
+                            <BorderPane fx:id="mainWordPane" style="-fx-background-color: #000000;" styleClass="mainWordPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <center>
+
+                            </center>
+                                <bottom>
+                            </bottom>
+                                <bottom>
+                                    <HBox alignment="CENTER" prefHeight="45.0" prefWidth="448.0" spacing="15.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+                                        <BorderPane.margin>
+                                            <Insets />
+                                        </BorderPane.margin>
+                              <ChoiceBox fx:id="methodes" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #ADD8E6;" />
+                              <Button mnemonicParsing="false" onAction="#display" prefHeight="12.0" prefWidth="100.0" style="-fx-background-color: #ADD8E6;" text="Run">
+                                 <font>
+                                    <Font name="Calibri Bold" size="14.0" />
+                                 </font></Button>
+                                    </HBox>
+                                </bottom>
+                        <top>
+                            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="448.0" spacing="15.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+
+                              <children>
+                                           <Label text="Queens Number" textFill="WHITE">
+                                    <font>
+                                       <Font name="Calibri" size="18.0" />
+                                    </font>
+                                    <effect>
+                                       <Glow level="0.38" />
+                                    </effect>
+                                 </Label>
+                                           <TextField fx:id="queens" prefHeight="27.0" prefWidth="79.0" text="8" />
+
+                                           <ImageView fitHeight="35.0" fitWidth="29.0" onMouseClicked="#reset" pickOnBounds="true" preserveRatio="true">
+                                               <Image url="@circular.png" />
+                                           </ImageView>
+                              </children>
+                           </HBox>
+                        </top>
+
+                            </BorderPane>
+                        </AnchorPane>
+                        <AnchorPane style="-fx-background-color: #000000;">
+                            <Accordion fx:id="myAccordion" layoutX="-8.0" prefHeight="450.0" prefWidth="250.0" style="-fx-background-color: #000000;">
+                                <panes>
+                                    <TitledPane accessibleRole="TITLED_PANE" animated="false" contentDisplay="RIGHT" style="-fx-background-color: #000000;" text="Breadth-First">
+                                        <graphic>
+                                            <ImageView fitHeight="38.0" fitWidth="38.0">
+                                                <Image url="@runer.png" />
+                                            </ImageView>
+                                        </graphic>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="265.0" prefWidth="196.0" style="-fx-background-color: #000000;">
+                                            <Label layoutX="13.0" layoutY="3.0" prefHeight="26.0" prefWidth="178.0" text="Solution" textFill="WHITE">
+                                    <font>
+                                       <Font name="Calibri Bold" size="18.0" />
+                                    </font></Label>
+                                            <Label layoutX="11.0" layoutY="52.0" prefHeight="22.0" prefWidth="227.0" text="Generated nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="16.0" layoutY="110.0" prefHeight="22.0" prefWidth="227.0" text="Explored nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="14.0" layoutY="170.0" prefHeight="22.0" prefWidth="176.0" text="Execution time" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                 <Label fx:id="s1" layoutX="66.0" layoutY="29.0" text="Pas de solution" textFill="WHITE" />
+                                 <Label fx:id="g1" layoutX="116.0" layoutY="83.0" text="0" textFill="WHITE">
+                                    <font>
+                                       <Font size="14.0" />
+                                    </font></Label>
+                                 <Label fx:id="e1" layoutX="116.0" layoutY="144.0" text="0" textFill="WHITE">
+                                    <font>
+                                       <Font size="14.0" />
+                                    </font></Label>
+                                 <Label fx:id="t1" layoutX="108.0" layoutY="200.0" text="Null" textFill="WHITE" />
+
+
+
+                                        </AnchorPane>
+                              <font>
+                                 <Font name="Calibri" size="18.0" />
+                              </font>
+                                    </TitledPane>
+
+                                    <TitledPane accessibleRole="TITLED_PANE" animated="false" contentDisplay="RIGHT" style="-fx-background-color: #000000;" text="Depth-First">
+                                        <graphic>
+                                            <ImageView fitHeight="38.0" fitWidth="38.0">
+                                                <Image url="@runer.png" />
+                                            </ImageView>
+                                        </graphic>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #000000;">
+
+                                            <Label layoutX="13.0" layoutY="14.0" prefHeight="22.0" prefWidth="227.0" text="Solution" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="8.0" layoutY="148.0" prefHeight="22.0" prefWidth="227.0" text="Generated nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+
+                                            <Label layoutX="8.0" layoutY="75.0" prefHeight="22.0" prefWidth="227.0" text="Explored nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="13.0" layoutY="207.0" prefHeight="22.0" prefWidth="176.0" text="Execution time" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="s2" layoutX="67.0" layoutY="36.0" text="Pas de solution" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="g2" layoutX="117.0" layoutY="107.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="e2" layoutX="121.0" layoutY="178.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="t2" layoutX="179.0" layoutY="205.0" text="Null" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                        </AnchorPane>
+                              <font>
+                                 <Font name="Calibri" size="18.0" />
+                              </font>
+                                    </TitledPane>
+                                    <TitledPane accessibleRole="TITLED_PANE" animated="false" contentDisplay="RIGHT" style="-fx-background-color: #000000;" text="A-star-1">
+                                        <graphic>
+                                            <ImageView fitHeight="38.0" fitWidth="38.0">
+                                                <Image url="@runer.png" />
+                                            </ImageView>
+                                        </graphic>
+
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #000000;">
+                                            <Label layoutX="13.0" layoutY="3.0" prefHeight="22.0" prefWidth="176.0" text="Solution" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="11.0" layoutY="52.0" prefHeight="22.0" prefWidth="227.0" text="Generated nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+
+                                            <Label layoutX="13.0" layoutY="110.0" prefHeight="22.0" prefWidth="227.0" text="Explored nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="16.0" layoutY="174.0" prefHeight="22.0" prefWidth="176.0" text="Execution time" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="s3" layoutX="71.0" layoutY="25.0" text="Pas de solution" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="g3" layoutX="116.0" layoutY="74.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="e3" layoutX="121.0" layoutY="132.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="t3" layoutX="122.0" layoutY="200.0" text="Null" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                        </AnchorPane>
+                                        <font>
+                                            <Font name="Calibri" size="18.0" />
+                                        </font>
+                                    </TitledPane>
+                                    <TitledPane accessibleRole="TITLED_PANE" animated="false" contentDisplay="RIGHT" style="-fx-background-color: #000000;" text="A-star-2">
+                                        <graphic>
+                                            <ImageView fitHeight="38.0" fitWidth="38.0">
+                                                <Image url="@runer.png" />
+                                            </ImageView>
+                                        </graphic>
+
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #000000;">
+                                            <Label layoutX="13.0" layoutY="3.0" prefHeight="22.0" prefWidth="176.0" text="Total number of nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="11.0" layoutY="52.0" prefHeight="22.0" prefWidth="227.0" text="Number of generated nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="13.0" layoutY="155.0" prefHeight="22.0" prefWidth="227.0" text="Number of explored nodes" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+
+                                            <Label layoutX="13.0" layoutY="110.0" prefHeight="22.0" prefWidth="227.0" text="Number of explored leaves" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label layoutX="13.0" layoutY="207.0" prefHeight="22.0" prefWidth="176.0" text="Execution time" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Calibri Bold" size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="llll1" layoutX="116.0" layoutY="25.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="llll2" layoutX="116.0" layoutY="74.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="llll3" layoutX="119.0" layoutY="177.0" prefHeight="17.0" prefWidth="0.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="llll4" layoutX="120.0" layoutY="132.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                            <Label fx:id="llll5" layoutX="179.0" layoutY="205.0" text="0" textFill="WHITE">
+                                                <font>
+                                                    <Font size="18.0" />
+                                                </font></Label>
+                                        </AnchorPane>
+                                        <font>
+                                            <Font name="Calibri" size="18.0" />
+                                        </font>
+                                    </TitledPane>
+                                </panes>
+                            </Accordion>
+                        </AnchorPane>
+                    </SplitPane>
+                </Tab>
+            </TabPane>
+        </AnchorPane>
+    </center>
+    <stylesheets>
+        <URL value="@demo.css" />
+    </stylesheets>
+</BorderPane>

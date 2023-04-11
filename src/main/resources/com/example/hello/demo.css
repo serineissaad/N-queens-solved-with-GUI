@@ -1,0 +1,52 @@
+#myAccordion .titled-pane {
+    -fx-text-fill: white;
+}
+
+#myAccordion .titled-pane:hover {
+    -fx-background-color: yellow !important;
+}
+
+#myAccordion .titled-pane > .content {
+    -fx-background-color: white;
+}
+
+#myAccordion .titled-pane > .title {
+    -fx-background-color: black;
+    -fx-border-color : white;
+
+}
+#myAccordion .arrow-button .arrow {
+    -fx-shape: "M 0 0 L 6 6 L 12 0";
+    -fx-background-color: white;
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: white;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color:  #ADD8E6;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: #ADD8E6;
+}
+
+
+.choice-box .context-menu { -fx-background-color: black; }
+// Focused item background color in the list
+.choice-box .menu-item:focused { -fx-background-color: #ADD8E6; }
+// Text color of non-focused items in the list
+.choice-box .menu-item > .label { -fx-text-fill: white; }
+// Text color of focused item in the list
+.choice-box .menu-item:focused > .label { -fx-text-fill: black; }
+
+
+.choice-box .menu-item > .label {
+    -fx-pref-width: 100;
+}
+
+
+
+
+
